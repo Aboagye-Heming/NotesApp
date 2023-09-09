@@ -1,10 +1,22 @@
+<script setup>
+import { ref } from "vue";
+
+const showModal = ref(false);
+</script>
+
 <template>
   <main>
-    <div class="overlay"></div>
+    <div v-if="showModal" class="overlay">
+      <div class="modal">
+        <textarea name="note" id="note" cols="30" rows="10"></textarea>
+        <button>Add Note</button>
+        <button class="close">Close</button>
+      </div>
+    </div>
     <div class="container">
       <header>
-        <h1>Notes</h1>
-        <button>+</button>
+        <h1>Notes {{showModal}}</h1>
+        <button @click="showModal = true">+</button>
       </header>
       <div class="cards-container">
         <div class="card">
@@ -24,14 +36,15 @@ main {
   height: 100vh;
   width: 100vw;
 }
-
-.overlay{
+.overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.23);
+  background-color: rgba(0, 0, 0, 0.23);
   z-index: 5;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -49,7 +62,7 @@ h1 {
   margin-bottom: 25px;
   font-size: 75px;
 }
-button {
+header button {
   border: none;
   height: 50px;
   width: 50px;
@@ -61,7 +74,7 @@ button {
   color: black;
 }
 
-.cards-container{
+.cards-container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -77,12 +90,34 @@ button {
   margin-right: 20px;
   margin-bottom: 20px;
 }
-.main-text{
+.main-text {
   color: black;
 }
-.date{
+.date {
   font-size: 12.5px;
   font-weight: bold;
   color: black;
+}
+.modal {
+  width: 750px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.modal button {
+  padding: 10px 20px;
+  font-size: 20px;
+  width: 100%;
+  background-color: blueviolet;
+  color: white;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.modal .close {
+  background-color: rgb(193, 15, 15);
+  margin-top: 7px;
 }
 </style>
