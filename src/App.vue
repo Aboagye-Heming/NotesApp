@@ -1,5 +1,6 @@
 <template>
   <main>
+    <div class="overlay"></div>
     <div class="container">
       <header>
         <h1>Notes</h1>
@@ -22,6 +23,15 @@
 main {
   height: 100vh;
   width: 100vw;
+}
+
+.overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.23);
+  z-index: 5;
+
 }
 
 .container {
